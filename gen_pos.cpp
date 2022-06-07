@@ -30,13 +30,9 @@ void genEmbb() {
   file.close();
 }
 
-string getUrllcFile(int timeSlot, int timeMinislot) {
-  return "./data/urllc-" + to_string(timeSlot) + "-" + to_string(timeMinislot) + ".txt";
-}
-
 void genUrllc(int timeSlot, int timeMinislot) {
   ofstream file;
-  file.open(getUrllcFile(timeSlot, timeMinislot));
+  file.open("./data/urllc-" + to_string(timeSlot) + "-" + to_string(timeMinislot) + ".txt");
   uniform_int_distribution<int> uniform(0, 1000);
   for (int i = 0; i < URLLC; ++i) {
     file << getMatlabFormat(uniform(g_positionEngine), uniform(g_positionEngine)) << endl;
